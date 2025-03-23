@@ -1,0 +1,8 @@
+Algorithm: Pysat
+
+3, T, 2, G
+T, T, G, G
+G, 3, G, G
+G, 1, T, 1
+
+Run time: 0.181600 milliseconds

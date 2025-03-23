@@ -1,0 +1,6 @@
+Algorithm: Pysat
+
+1, G
+G, T
+
+Run time: 0.106600 milliseconds
