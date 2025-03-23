@@ -5,4 +5,4 @@ T, T, G, G
 G, 3, G, G
 G, 1, T, 1
 
-Run time: 0.181600 milliseconds
+Run time: 0.176200 milliseconds
