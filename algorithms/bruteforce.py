@@ -12,11 +12,11 @@ class BruteforceSolver:
 
     def isClauseTrue(self, clause):
         for x in clause:
-            if x > 0 and self.value[x] == 1: # true for Trap
-                return True
-            elif x < 0 and self.value[-x] == 0: # true for Gem
-                return True
-        return False
+            if x > 0 and self.value[x] != 1: # true for Trap
+                return False
+            elif x < 0 and self.value[-x] != 0: # true for Gem
+                return False
+        return True
 
     def isSolved(self):
         for clause in self.cnf:

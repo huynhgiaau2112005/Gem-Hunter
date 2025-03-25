@@ -1,3 +1,5 @@
+import os
+
 class BacktrackingSolver:
     def __init__(self):
         self.board = []
@@ -5,62 +7,52 @@ class BacktrackingSolver:
         self.var_map = {}
         self.solution = []
         self.value = {}
+        self.blank = []
         self.rows = 0
         self.cols = 0
         self.solved = False
 
     def isClauseTrue(self, clause):
-        for x in clause:
-            if x > 0 and self.value[x] == 1: # true for Trap
+        for literal in clause:
+            if literal < 0 and self.value[-literal] in (0, -1): # Gem
                 return True
-            elif x < 0 and self.value[-x] == 0: # true for Gem
+            if literal > 0 and self.value[literal] in (1, -1): # Trap
                 return True
+        
         return False
 
-    def backtrack(self, x=0, y=0):
-        #print(f"({x}, {y}) - {self.solved}")
+    def isSuitable(self):
+        for clause in self.cnf:
+            if not self.isClauseTrue(clause):
+                return False
+        return True
 
+    def backtrack(self, index=0):
         if self.solved:
             return
         
-        # nếu đã hoàn thành cnf
-        if x == len(self.cnf):
+        # if done cnf
+        if index == len(self.value):
             self.solved = True
+
             self.solution = [row[:] for row in self.board]
-            
             for key in self.value:
                 x = (key - 1) // self.cols
                 y = (key - 1) % self.cols
-                self.solution[x][y] = "G" if self.value[key] == 1 else "T"
+                self.solution[x][y] = "T" if self.value[key] == 1 else "G"
 
             return
+        print(index)
+        var = self.blank[index]
 
-        # nếu đã hoàn thành 1 clause
-        if y == len(self.cnf[x]):
-            #input("end clause")
-            if self.isClauseTrue(self.cnf[x]):
-                self.backtrack(x + 1, 0)
-                return
-            else:
-                return
-        
-        cell = abs(self.cnf[x][y])
-        #print(cell)
-
-        if self.value[cell] == -1:
-            for value in range(2):
-                self.value[cell] = value
-                self.backtrack(x, y + 1)
-
-                if self.solved:
-                    return
-                
-                self.value[cell] = -1
-        else:
-            self.backtrack(x, y + 1)
+        for value in range(2):
+            self.value[var] = value
+            if self.isSuitable():
+                self.backtrack(index + 1)
             if self.solved:
                 return
-        #print(f"{x},{y} = {-1}")
+            self.value[var] = -1
+
 
     def solve(self, board, cnf, var_map):
         self.board = board
@@ -73,6 +65,7 @@ class BacktrackingSolver:
             for y in range(self.cols):
                 if self.board[x][y] == "_":
                     id = self.var_map[x, y]
+                    self.blank.append(id)
                     self.value[id] = -1
 
         # for row in self.board:
@@ -85,8 +78,3 @@ class BacktrackingSolver:
 
         if self.solved:
             return self.solution
-
-
-
-
-

@@ -71,6 +71,9 @@ class ArgumentHandler:
 
         storage.board = storage.board = TextDAO().get(inputPath)
         storage.cnf, storage.var_map = CNFGenerator().generate(storage.board)
+        # print(f"\nCNF size: {len(storage.cnf)}\n")
+        # for row in storage.cnf:
+        #     print(row)
 
         start_time = time.perf_counter()
         solution = self.solve(algorithm, storage.board, storage.cnf, storage.var_map)

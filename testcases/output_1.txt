@@ -1,8 +1,8 @@
-Algorithm: Pysat
+Algorithm: Backtracking
 
 3, T, 2, G
 T, T, G, G
 G, 3, G, G
 G, 1, T, 1
 
-Run time: 0.176200 milliseconds
+Run time: 3.323600 milliseconds

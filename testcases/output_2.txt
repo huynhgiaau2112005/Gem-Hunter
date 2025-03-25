@@ -1,7 +1,6 @@
 Algorithm: Backtracking
 
-3, T, 2, G
-T, T, 2, G
-T, 3, 1, G
+1, G
+G, T
 
-Run time: 0.219400 milliseconds
+Run time: 1.263300 milliseconds

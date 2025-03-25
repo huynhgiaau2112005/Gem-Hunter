@@ -41,8 +41,8 @@ class CNFGenerator:
                 # Các Clause của CNF gồm: (1) và (2)
                 # --------------------------------------------------------------------
                 from itertools import combinations
-                cnf.extend([[v for v in comb] for comb in combinations(vars, num + 1)]) # (1)
-                cnf.extend([[-v for v in comb] for comb in combinations(vars, len(vars) - num + 1)]) # (2)
+                cnf.extend([[-v for v in comb] for comb in combinations(vars, num + 1)]) # (1)
+                cnf.extend([[v for v in comb] for comb in combinations(vars, len(vars) - num + 1)]) # (2)
         
         # Loại bỏ các ràng buộc trùng nhau
         cnf = list(map(list, set(map(tuple, cnf))))
