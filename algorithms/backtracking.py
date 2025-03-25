@@ -42,7 +42,6 @@ class BacktrackingSolver:
                 self.solution[x][y] = "T" if self.value[key] == 1 else "G"
 
             return
-        print(index)
         var = self.blank[index]
 
         for value in range(2):

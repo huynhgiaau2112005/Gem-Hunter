@@ -1,6 +1,6 @@
-Algorithm: Backtracking
+Algorithm: Brute Force
 
-1, G
-G, T
+1, T
+G, G
 
-Run time: 1.263300 milliseconds
+Run time: 0.023500 milliseconds
