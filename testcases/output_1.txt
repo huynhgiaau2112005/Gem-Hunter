@@ -1,8 +1,0 @@
-Algorithm: Brute Force
-
-3, T, 2, G
-T, T, G, G
-T, 3, G, T
-G, 1, G, 1
-
-Run time: 7.340400 milliseconds

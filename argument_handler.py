@@ -13,12 +13,6 @@ inputPaths = {
     "3": storage.input_3_path
 }
 
-outputPath = {
-    storage.input_1_path: storage.output_1_path,
-    storage.input_2_path: storage.output_2_path,
-    storage.input_3_path: storage.output_3_path
-}
-
 PYSAT = "pysat"
 BRUTE_FORCE = "bruteforce"
 BACKTRACKING = "backtracking"
@@ -53,6 +47,36 @@ class ArgumentHandler:
         elif algorithm == algorithmName[BACKTRACKING]:
             return BacktrackingSolver().solve(board, cnf, var_map)
 
+    def result(self, algorithm, solution, runtime):
+        print(f"Algorithm: {algorithm}")
+
+        if solution:
+            gems = sum(cell == "G" for row in solution for cell in row)
+            traps = sum(cell == "T" for row in solution for cell in row)
+            filled = gems + traps
+            cnfs = len(storage.cnf)   
+            print("Solution:")
+            for row in solution:
+                for element in row:
+                    if element == "G":
+                        print(f"\033[32m{element}\033[0m", end=" ") # green text
+                    elif element == "T":
+                        print(f"\033[31m{element}\033[0m", end=" ") # red text
+                    else:
+                        print(f"{element}", end=" ")
+                print("")
+
+            print(f"\nFilled: \033[34m{filled}\033[0m")
+            print(f"  Gems: \033[32m{gems}\033[0m")
+            print(f" Traps: \033[31m{traps}\033[0m")
+
+            print("")
+            print(f"Number of CNF clauses: \033[34m{cnfs}\033[0m")
+            print(f"Run time: \033[34m{runtime:6f}\033[0m seconds\n") # green text
+        else:
+            print("No solution found")
+
+
     def execute(self):
         global inputPaths, algorithmName
         argvInputPath = self.arguments[1]
@@ -79,20 +103,17 @@ class ArgumentHandler:
         solution = self.solve(algorithm, storage.board, storage.cnf, storage.var_map)
         end_time = time.perf_counter()
 
-        runtime = (end_time - start_time) * 1000
+        runtime = end_time - start_time
 
-        print(f"Algorithm: {algorithm}")
+        self.result(algorithm, solution, runtime)
+
         if solution:
-            print("Solution:")
-            for row in solution:
-                print(" ".join(map(str, row)))
-            print(f"Run time: {runtime:6f} milliseconds\n")
-            
             global outputPath
-            TextDAO().export(outputPath[inputPath], solution, algorithm, runtime)
-            print(f"File '{outputPath[inputPath]}' has been exported.\n")
-        else:
-            print("No solution found")
+            path = inputPath.replace("input", "output").replace(".txt", "") \
+                + "_" + algorithm.replace(" ", "").lower() \
+                + ".txt"
+            TextDAO().export(path, inputPath, solution, algorithm, runtime)
+            print(f"File '{path}' has been exported.\n")
 
 
 
