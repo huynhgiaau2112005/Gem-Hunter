@@ -7,13 +7,13 @@ from algorithms.bruteforce import BruteforceSolver
 import time
 
 PYSAT = "Pysat"
-BRUTE_FORCE = "Brute Force"
 BACKTRACKING = "Backtracking"
+BRUTE_FORCE = "Brute Force"
 
 algorithmName = {
     1: PYSAT,
-    2: BRUTE_FORCE,
-    3: BACKTRACKING
+    2: BACKTRACKING,
+    3: BRUTE_FORCE
 }
 
 inputPath = {
@@ -44,9 +44,8 @@ class Menu:
     def enterAlgorithm(self):
         global algorithmName
         print("Choose an algorithm:")
-        print("1. Pysat")
-        print("2. Brute Force")
-        print("3. Backtracking")
+        for i in range(len(algorithmName)):
+            print(f"{i + 1}. {algorithmName[i + 1]}")
         enter = 0
         while enter not in ("1", "2", "3"):
             enter = input("> Pick: ")
