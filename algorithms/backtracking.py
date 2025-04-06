@@ -52,7 +52,6 @@ class BacktrackingSolver:
                 return
             self.value[var] = -1
 
-
     def solve(self, board, cnf, var_map):
         self.board = board
         self.cnf = cnf

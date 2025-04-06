@@ -1,0 +1,20 @@
+Algorithm: Backtracking
+
+TESTCASE INFORMATION -------------------------------------
+Input Path: testcases/input/input_1.txt
+Size: 5x5
+Blanks: 17/25
+
+SOLUTION -------------------------------------------------
+G, 3, T, T, 2
+T, 4, T, G, T
+G, T, 3, G, 3
+2, G, G, T, T
+T, 1, G, 3, T
+
+Filled: 17
+  Gems: 7
+ Traps: 10
+
+Number of CNF clauses: 138
+Run time: 0.003128 seconds

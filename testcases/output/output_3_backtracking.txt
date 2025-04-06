@@ -1,0 +1,35 @@
+Algorithm: Backtracking
+
+TESTCASE INFORMATION -------------------------------------
+Input Path: testcases/input/input_3.txt
+Size: 20x20
+Blanks: 314/400
+
+SOLUTION -------------------------------------------------
+G, G, 2, G, G, G, 3, G, G, G, 2, G, G, 1, G, G, G, 2, G, G
+G, 3, T, T, 2, T, T, T, G, 3, T, T, G, T, 2, G, G, T, T, 2
+T, T, G, 2, G, G, G, 3, T, T, G, 2, G, G, G, T, G, 2, G, T
+2, G, G, G, G, 3, G, G, G, 2, G, G, 2, G, G, G, 3, G, G, G
+G, G, 2, T, T, T, T, 2, G, G, G, T, 3, T, G, 2, T, T, 3, G
+G, G, T, 3, G, G, G, T, 2, G, G, G, T, 2, G, T, G, 3, T, T
+G, 2, G, G, G, 2, G, G, T, 3, G, G, G, G, G, 3, G, G, G, G
+3, T, G, G, G, T, T, 2, G, T, T, 3, G, G, G, T, T, 2, G, G
+T, T, 3, G, G, 2, G, G, G, G, T, T, 2, G, G, 2, G, T, 3, G
+G, G, T, 2, G, G, G, 3, T, G, G, G, T, 3, G, G, G, 2, T, T
+2, T, G, G, T, 3, T, T, 2, G, T, G, 2, T, T, G, G, G, G, 2
+T, 3, G, G, T, G, 2, G, G, G, 3, G, G, G, G, G, 3, G, G, G
+G, G, T, 3, G, G, G, G, G, 2, T, T, G, G, 2, T, T, T, 2, G
+G, 2, G, G, T, 2, G, G, G, G, T, G, 3, G, G, T, G, G, G, T
+3, T, G, G, G, G, T, 2, G, 2, G, T, T, 2, G, G, G, 3, G, G
+T, T, 3, G, G, G, G, 3, T, G, G, 2, G, G, T, 2, T, T, T, G
+G, G, T, 2, G, G, G, T, 2, G, G, G, G, 3, G, G, G, G, 3, G
+G, 2, G, G, T, 3, G, G, G, G, G, G, 2, T, T, 2, G, G, G, T
+G, G, T, 4, G, T, T, G, T, 2, G, G, T, G, 3, G, T, G, G, T
+G, 2, T, T, G, 2, G, 3, T, G, G, 2, T, G, G, T, G, T, 3, T
+
+Filled: 314
+  Gems: 216
+ Traps: 98
+
+Number of CNF clauses: 4049
+Run time: 123.416296 seconds
